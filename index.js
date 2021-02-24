@@ -26,19 +26,15 @@ app.get('/info', async (req, res) => {
         online = match[1];
         max_online = match[2];
 
-        console.log("difficulty")
         difficulty = await conn.send('difficulty');
         difficulty = /The difficulty is (?<diff>[A-Za-z]+)/gm.exec(difficulty)[1];
 
-        console.log("seed")
         seed = await conn.send('seed')
         seed = /Seed: \[(?<seed>[0-9]+)\]/gm.exec(seed)[1];
 
-        console.log("border")
         border = await conn.send('worldborder get')
         border = /The world border is currently (?<border>[0-9]+) blocks wide/gm.exec(border)[1];
 
-        console.log("day")
         day = await conn.send('time query day')
         day = /The time is (?<day>[0-9]+)/gm.exec(day)[1];
 
